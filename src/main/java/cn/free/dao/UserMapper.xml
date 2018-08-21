@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.free.dao.UserMapper">
+
+
+    <select id="login" resultType="User" parameterType="User">
+        SELECT id,userName,password,realName from users
+          <where>
+              userName=#{userName} AND password=#{password}
+          </where>
+    </select>
+
+    <insert id="insert" parameterType="user">
+        INSERT into users(userName,pwd) VALUES (#{name},#{password})
+    </insert>
+
+
+
+
+    <insert id="addRecord" parameterType="product">
+        INSERT into sale(price,quantity,totalPrice,saleDate,userId,productId)
+         VALUES (#{price},#{quantity},#{totalPrice},#{saleDate},#{userId},#{productId});
+    </insert>
+
+    <select id="queryQuantity" resultType="int" parameterType="int">
+        SELECT quantity from product WHERE id=#{xxx}
+    </select>
+
+    <update id="destock">
+        UPDATE product set quantity=#{num} WHERE id=#{productId}
+    </update>
+    
+    
+</mapper>
+

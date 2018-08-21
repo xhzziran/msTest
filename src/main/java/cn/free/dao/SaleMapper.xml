@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.free.dao.SaleMapper">
+
+    <select id="findAll" resultMap="saleMapper" parameterType="string">
+
+        SELECT s.id as s_id,p.productName,s.price,s.quantity AS s_quantity,s.totalPrice,s.saleDate,u.userName FROM sale s,product p,users u where s.productId=p.id AND s.userId=u.id
+          ORDER BY ${obj}
+
+    </select>
+
+    <resultMap id="saleMapper" type="SaleDetail">
+
+        <id property="id" column="s_id"/>
+        <result property="product" column="productName"/>
+        <result property="price" column="price"/>
+        <result property="quantity" column="s_quantity"/>
+        <result property="totalPrice" column="totalPrice"/>
+        <result property="saleDate" column="saleDate"/>
+        <result property="salesman" column="userName"/>
+
+    </resultMap>
+
+
+
+</mapper>

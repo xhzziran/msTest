@@ -1,0 +1,6 @@
+
+
+
+function  submitCheck() {
+    ${".name"}.val
+}
