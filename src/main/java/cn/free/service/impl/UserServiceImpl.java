@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int addRecord(Sale sale) {
+        int a = 2;
         int row = userMapper.addRecord(sale);
         int num1 = userMapper.queryQuantity(sale.getProductId());
         int num2 = num1-sale.getQuantity();
